@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sector Rotation — Vanguard Sector Screener</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="mark">RS</span>
+      <h1>Sector &amp; Stock Screener</h1>
+    </div>
+    <nav class="nav-tabs">
+      <a href="index.html" class="active">Sector Rotation</a>
+      <a href="stocks.html">Stock Screener</a>
+    </nav>
+    <div class="topbar-meta">
+      <span id="last-updated">Loading…</span>
+      <a class="btn btn-ghost" href="https://github.com/" id="actions-link" target="_blank" rel="noopener">Run update ↗</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-intro">
+      <h2>Sector Rotation vs S&amp;P 500</h2>
+      <p>
+        The 11 Vanguard sector ETFs, ranked by relative strength against SPY across four
+        timeframes. Relative strength is the ETF's return <em>relative to the S&amp;P 500</em>,
+        not its raw return — a sector can be up in price and still be lagging the market.
+        Click a sector to see every stock inside it.
+      </p>
+    </div>
+
+    <div class="callout">
+      Data refreshes automatically on trading days. To pull a fresh snapshot on demand, open this
+      repo's <strong>Actions</strong> tab → <strong>Update sector &amp; stock screener data</strong> →
+      <strong>Run workflow</strong>.
+    </div>
+
+    <div id="history-bar"></div>
+
+    <div class="panel" id="sector-panel">
+      <div class="table-scroll-top" id="sector-scroll-top"><div class="table-scroll-top-inner"></div></div>
+      <div class="table-scroll" id="sector-scroll-main">
+      <table>
+        <thead id="sector-thead">
+          <tr>
+            <th>Sector</th>
+            <th class="num">Last</th>
+            <th class="num" data-sort-key="daily">RS · Daily</th>
+            <th class="num" data-sort-key="weekly">RS · Weekly</th>
+            <th class="num" data-sort-key="monthly">RS · Monthly</th>
+            <th class="num" data-sort-key="quarterly">RS · 3M</th>
+            <th class="num" data-sort-key="semiannual">RS · 6M</th>
+            <th class="num sort-active" data-sort-key="yearly">RS · Yearly</th>
+            <th class="num" data-sort-key="breadth">Breadth</th>
+          </tr>
+        </thead>
+        <tbody id="sector-tbody">
+          <tr><td colspan="9"><div class="empty-state">Loading sector data…</div></td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    Relative strength = (sector ETF return ÷ SPY return) over each window, expressed as a percentage.
+    Bars are scaled per-column so magnitude is comparable across sectors. Breadth = % of that sector's
+    own stocks currently RS-outperforming SPY -- a broad reading means the move isn't just a couple of
+    mega-caps carrying it. Not investment advice.
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script src="js/history.js"></script>
+  <script src="js/sectors.js"></script>
+</body>
+</html>

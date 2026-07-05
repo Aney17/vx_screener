@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stock Screener — Vanguard Sector Screener</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="mark">RS</span>
+      <h1>Sector &amp; Stock Screener</h1>
+    </div>
+    <nav class="nav-tabs">
+      <a href="index.html">Sector Rotation</a>
+      <a href="stocks.html" class="active">Stock Screener</a>
+    </nav>
+    <div class="topbar-meta">
+      <span id="last-updated">Loading…</span>
+      <a class="btn btn-ghost" href="https://github.com/" id="actions-link" target="_blank" rel="noopener">Run update ↗</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-intro">
+      <h2>Total Market Screener</h2>
+      <p>
+        Every stock held across the 11 Vanguard sector ETFs, with trend, momentum, volume, and
+        relative-strength signals. <strong>RS breakout</strong> flags stocks whose relative strength
+        line just crossed above its own 50-day average and hasn't fallen back below it — the date and
+        age shown is when that started. <strong>Ext (ATR)</strong> shows how many average true ranges
+        price is stretched above its 50-day SMA — very high readings mean a name is already extended
+        and more prone to a pullback right as you'd be entering.
+      </p>
+    </div>
+
+    <div id="history-bar"></div>
+
+    <div class="filters" id="filters-row">
+      <select id="sector-filter"><option value="all">All sectors</option></select>
+      <input type="text" id="search-box" placeholder="Search ticker or name…">
+      <label class="checkbox-filter">
+        <input type="checkbox" id="breakout-only">
+        RS breakouts only
+      </label>
+      <label class="checkbox-filter">
+        <input type="checkbox" id="hide-guardrails">
+        Hide extended / illiquid
+      </label>
+      <div class="spacer"></div>
+    </div>
+
+    <div class="filters filters-secondary" id="filters-row-2">
+      <select id="trend-filter">
+        <option value="all">Any trend</option>
+        <option value="strong uptrend">Strong uptrend</option>
+        <option value="emerging uptrend">Emerging uptrend</option>
+        <option value="mixed / consolidating">Mixed / consolidating</option>
+        <option value="emerging downtrend">Emerging downtrend</option>
+        <option value="strong downtrend">Strong downtrend</option>
+      </select>
+      <label class="number-filter">
+        Min RS 1M
+        <input type="number" id="min-rs1m" placeholder="e.g. 5" step="0.5">
+        <span class="unit">%</span>
+      </label>
+      <label class="number-filter">
+        Min Rel. Vol
+        <input type="number" id="min-relvol" placeholder="e.g. 1.5" step="0.1" min="0">
+        <span class="unit">×</span>
+      </label>
+      <label class="number-filter">
+        Max RSI
+        <input type="number" id="max-rsi" placeholder="e.g. 70" step="1" min="0" max="100">
+      </label>
+      <button class="btn btn-ghost" id="reset-filters" type="button">Reset filters</button>
+      <div class="spacer"></div>
+    </div>
+
+    <div id="stat-strip" class="stat-strip"></div>
+
+    <div class="panel" id="stock-panel">
+      <div class="table-scroll-top" id="stock-scroll-top"><div class="table-scroll-top-inner"></div></div>
+      <div class="table-scroll" id="stock-scroll-main">
+      <table>
+        <thead id="stock-thead">
+          <tr>
+            <th data-sort-key="ticker">Stock</th>
+            <th class="num" data-sort-key="last_close">Last</th>
+            <th data-sort-key="trend">Trend</th>
+            <th class="num" data-sort-key="rsi14">RSI-14</th>
+            <th class="num" data-sort-key="macd_hist">MACD Hist</th>
+            <th class="num" data-sort-key="roc_1m_pct">1M ROC</th>
+            <th class="num" data-sort-key="momentum_12m_skip1m_pct">Mom 12M‑1M</th>
+            <th class="num" data-sort-key="relative_volume">Rel. Vol</th>
+            <th class="num" data-sort-key="up_down_volume_ratio">Up/Dn Vol</th>
+            <th class="num sort-active" data-sort-key="rs_vs_spy_1m_pct">RS 1M</th>
+            <th class="num" data-sort-key="rs_vs_spy_3m_pct">RS 3M</th>
+            <th class="num" data-sort-key="rs_vs_spy_6m_pct">RS 6M</th>
+            <th class="num" data-sort-key="rs_vs_spy_1y_pct">RS 1Y</th>
+            <th class="num" data-sort-key="rs_slope_10d_pct">RS Slope</th>
+            <th data-sort-key="rs_outperform_since">RS Breakout</th>
+            <th class="num" data-sort-key="extension_atrs">Ext (ATR)</th>
+          </tr>
+        </thead>
+        <tbody id="stock-tbody">
+          <tr><td colspan="16"><div class="empty-state">Loading stock data…</div></td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    Trend = price vs 50/200-day moving averages. RSI-14 &gt; 70 overbought, &lt; 30 oversold.
+    Mom 12M-1M = 12-month return excluding the most recent month (standard academic momentum
+    construction, avoids short-term reversal noise). Rel. Vol = today's volume vs its 20-day
+    average; Up/Dn Vol = 20-day volume on up days ÷ down days, a sturdier accumulation read than
+    a single day's spike. Ext (ATR) and low-liquidity rows are flagged, not excluded — use judgment.
+    Not investment advice.
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script src="js/history.js"></script>
+  <script src="js/stocks.js"></script>
+</body>
+</html>

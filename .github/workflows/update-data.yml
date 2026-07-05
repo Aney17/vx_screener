@@ -1,0 +1,46 @@
+name: Update sector & stock screener data
+
+on:
+  schedule:
+    # 21:30 UTC = 4:30pm US/Eastern during EDT (market close), roughly.
+    # Adjust if you want a different refresh time; GitHub Actions cron is UTC.
+    - cron: "30 21 * * 1-5"
+  workflow_dispatch: {}   # adds a "Run workflow" button on the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Fetch sector relative-strength data (Part 1)
+        run: python scripts/fetch_sector_rs.py
+
+      - name: Fetch total market stock screener (Part 2)
+        run: python scripts/fetch_stock_screener.py
+
+      - name: Archive today's snapshot for the history calendar
+        run: python scripts/backup_snapshots.py
+
+      - name: Score aged signals against actual forward returns
+        run: python scripts/backtest_report.py
+
+      - name: Commit updated data
+        run: |
+          git config user.name "screener-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/
+          git diff --staged --quiet && echo "No data changes" || git commit -m "Update screener data ($(date -u +'%Y-%m-%d %H:%M UTC'))"
+          git push
