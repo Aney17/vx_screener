@@ -84,6 +84,16 @@ LOW_LIQUIDITY_DOLLAR_VOL = 5_000_000
 # prone to a sharp mean-reversion pullback right as you'd be entering.
 EXTENSION_ATR_THRESHOLD = 3.0
 
+# Focus-tier thresholds -- classify each stock into "high_focus" / "watch" /
+# "skip" using signals already computed above. These are starting judgment
+# calls, not derived from data yet; once backtest_report.py has enough
+# history, check whether "high_focus" entries actually outperformed "watch"
+# ones over the following BACKTEST_HOLDING_DAYS and retune these if not.
+FOCUS_RSI_HEALTHY_MIN = 40      # below this, momentum may already be fading
+FOCUS_RSI_HEALTHY_MAX = 75      # above this, treat as overbought caution
+FOCUS_BREAKOUT_FRESH_DAYS = 15  # breakout younger than this counts as "fresh"
+FOCUS_BREAKOUT_AGING_DAYS = 45  # breakout older than this is a caution flag
+
 HOLDINGS_DIR = _path("data", "holdings")
 OUTPUT_SECTORS = _path("data", "sectors.json")
 OUTPUT_STOCKS = _path("data", "stocks.json")

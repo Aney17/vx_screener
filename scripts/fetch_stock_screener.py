@@ -36,14 +36,15 @@ from config import (
     RSI_PERIOD, ROC_PERIOD, VOLUME_AVG_PERIOD, RS_MA_PERIOD, RS_SLOPE_WINDOW,
     ATR_PERIOD, UP_DOWN_VOLUME_WINDOW, MOMENTUM_LOOKBACK, MOMENTUM_SKIP,
     LEADING_SECTOR_RANK_CUTOFF, LOW_LIQUIDITY_DOLLAR_VOL, EXTENSION_ATR_THRESHOLD,
-    OUTPUT_STOCKS, OUTPUT_SECTORS, SNAPSHOT_LOG, RS_WINDOWS,
+    FOCUS_RSI_HEALTHY_MIN, FOCUS_RSI_HEALTHY_MAX, FOCUS_BREAKOUT_FRESH_DAYS,
+    FOCUS_BREAKOUT_AGING_DAYS, OUTPUT_STOCKS, OUTPUT_SECTORS, SNAPSHOT_LOG, RS_WINDOWS,
 )
 from holdings import build_master_list
 from indicators import (
     sma, rsi, macd, relative_volume, relative_strength_line,
     rs_breakout_date, rs_breakout_age, trend_state, pct_change_over,
     momentum_factor, rs_slope, atr, extension_in_atrs, dollar_volume,
-    up_down_volume_ratio,
+    up_down_volume_ratio, classify_focus_tier,
 )
 
 BATCH_SIZE = 100  # yfinance handles multi-ticker downloads better in batches
@@ -81,7 +82,7 @@ def load_sector_ranks():
     return {row["sector"]: row["rs_rank"] for row in data.get("sectors", [])}
 
 
-def score_stock(ticker, df, benchmark_close, sector_info, sector_ranks):
+def _score_stock_raw(ticker, df, benchmark_close, sector_info, sector_ranks):
     high, low, close, volume = df["High"], df["Low"], df["Close"], df["Volume"]
 
     fast_ma = sma(close, SMA_TREND_FAST)
@@ -136,6 +137,25 @@ def score_stock(ticker, df, benchmark_close, sector_info, sector_ranks):
         "sector_rs_rank": sector_rank,
         "sector_leading": bool(sector_rank is not None and sector_rank <= LEADING_SECTOR_RANK_CUTOFF),
     }
+
+
+def score_stock(ticker, df, benchmark_close, sector_info, sector_ranks):
+    record = _score_stock_raw(ticker, df, benchmark_close, sector_info, sector_ranks)
+    record["focus_tier"] = classify_focus_tier(
+        currently_outperforming=record["currently_outperforming"],
+        breakout_age_days=record["rs_breakout_age_days"],
+        trend=record["trend"],
+        rsi14=record["rsi14"],
+        rs_1m_pct=record["rs_vs_spy_1m_pct"],
+        rs_6m_pct=record["rs_vs_spy_6m_pct"],
+        extended_guardrail=record["extended_guardrail"],
+        low_liquidity_guardrail=record["low_liquidity_guardrail"],
+        rsi_healthy_min=FOCUS_RSI_HEALTHY_MIN,
+        rsi_healthy_max=FOCUS_RSI_HEALTHY_MAX,
+        fresh_days=FOCUS_BREAKOUT_FRESH_DAYS,
+        aging_days=FOCUS_BREAKOUT_AGING_DAYS,
+    )
+    return record
 
 
 def build_stock_table():

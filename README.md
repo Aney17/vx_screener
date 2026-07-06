@@ -166,6 +166,21 @@ controls what the live calendar can serve. Raise it if you want a longer visible
   above its 50-day SMA (very stretched readings mean higher pullback risk right as
   you'd be entering); `avg_dollar_volume` flags thin/illiquid names. Both are shown so
   you can apply judgment rather than being silently excluded from the list.
+- **Focus tier** = a single `high_focus` / `watch` / `skip` classification rolling up
+  everything above, on the stock screener page. `skip` means no active edge right now
+  (not currently outperforming) or the liquidity guardrail means it can't be traded
+  cleanly. `watch` means it's outperforming but has at least one caution flag —
+  overbought RSI, already extended, an aging breakout (past `FOCUS_BREAKOUT_AGING_DAYS`),
+  or inconsistent momentum across timeframes (a recent 1-month pop sitting on top of a
+  6-month decline). `high_focus` means outperforming, a fresh breakout (within
+  `FOCUS_BREAKOUT_FRESH_DAYS`), a strong uptrend, and RSI in a healthy range with nothing
+  flagged. A stock can post enormous RS numbers and still land in `watch` rather than
+  `high_focus` — large gains and low risk are different questions, and the tier is built
+  to keep them separate. The thresholds live in `config.py` as `FOCUS_RSI_HEALTHY_MIN/MAX`,
+  `FOCUS_BREAKOUT_FRESH_DAYS`, and `FOCUS_BREAKOUT_AGING_DAYS` — they're judgment calls, not
+  derived from data yet. Once `backtest_report.py` has enough history, it's worth checking
+  whether `high_focus` entries actually outperformed `watch` ones over the following 60
+  days and retuning these if not.
 
 ## Project structure
 

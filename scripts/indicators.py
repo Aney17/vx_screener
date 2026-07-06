@@ -222,3 +222,52 @@ def up_down_volume_ratio(close: pd.Series, volume: pd.Series, period: int = 20) 
     if down_vol == 0:
         return None
     return round(up_vol / down_vol, 2)
+
+
+def classify_focus_tier(
+    currently_outperforming, breakout_age_days, trend, rsi14,
+    rs_1m_pct, rs_6m_pct, extended_guardrail, low_liquidity_guardrail,
+    rsi_healthy_min, rsi_healthy_max, fresh_days, aging_days,
+) -> str:
+    """
+    Rolls up everything already computed into one of three tiers, so the
+    screener can surface "what to actually look at" at a glance instead of
+    requiring the person to mentally weigh 16 columns for every row.
+
+    - "skip": no active edge right now (not currently outperforming), or the
+      liquidity guardrail means it can't be traded cleanly anyway. This is
+      not a judgment that the stock is "bad" -- just that it's not currently
+      relevant to a breakout-momentum search.
+    - "watch": actively outperforming, but with at least one caution flag --
+      overbought RSI, already extended, an aging breakout, or momentum that
+      looks inconsistent across timeframes (a recent 1-month pop sitting on
+      top of a 6-month decline, rather than sustained strength). A stock can
+      show huge relative-strength numbers and still land here rather than
+      "high_focus" -- large gains and low risk are different questions.
+    - "high_focus": outperforming, fresh breakout, strong uptrend, and RSI in
+      a healthy range with no guardrail triggered. The cleanest setups.
+    """
+    if not currently_outperforming or low_liquidity_guardrail:
+        return "skip"
+
+    caution = False
+    if rsi14 is not None and rsi14 > rsi_healthy_max:
+        caution = True
+    if extended_guardrail:
+        caution = True
+    if breakout_age_days is not None and breakout_age_days > aging_days:
+        caution = True
+    if rs_1m_pct is not None and rs_6m_pct is not None and rs_1m_pct > 0 and rs_6m_pct < 0:
+        caution = True
+
+    if caution:
+        return "watch"
+
+    if (
+        breakout_age_days is not None and breakout_age_days <= fresh_days
+        and trend == "strong uptrend"
+        and rsi14 is not None and rsi_healthy_min <= rsi14 <= rsi_healthy_max
+    ):
+        return "high_focus"
+
+    return "watch"

@@ -29,11 +29,18 @@
       <h2>Total Market Screener</h2>
       <p>
         Every stock held across the 11 Vanguard sector ETFs, with trend, momentum, volume, and
-        relative-strength signals. <strong>RS breakout</strong> flags stocks whose relative strength
-        line just crossed above its own 50-day average and hasn't fallen back below it — the date and
-        age shown is when that started. <strong>Ext (ATR)</strong> shows how many average true ranges
-        price is stretched above its 50-day SMA — very high readings mean a name is already extended
-        and more prone to a pullback right as you'd be entering.
+        relative-strength signals. <strong>Focus</strong> rolls the rest of the row up into one
+        tier — <strong>high focus</strong> is a fresh, healthy breakout with nothing flagged;
+        <strong>watch</strong> is still outperforming but with a caution sign (overbought, already
+        extended, an aging breakout, or momentum that's inconsistent across timeframes); <strong>skip</strong>
+        means there's no active edge right now, or the stock can't be traded cleanly. A stock can
+        show huge relative-strength numbers and still land in "watch" rather than "high focus" —
+        big gains and low risk are different questions. <strong>RS breakout</strong> flags stocks
+        whose relative strength line just crossed above its own 50-day average and hasn't fallen
+        back below it — the date and age shown is when that started. <strong>Ext (ATR)</strong>
+        shows how many average true ranges price is stretched above its 50-day SMA — very high
+        readings mean a name is already extended and more prone to a pullback right as you'd be
+        entering.
       </p>
     </div>
 
@@ -88,6 +95,7 @@
       <table>
         <thead id="stock-thead">
           <tr>
+            <th data-sort-key="focus_tier">Focus</th>
             <th data-sort-key="ticker">Stock</th>
             <th class="num" data-sort-key="last_close">Last</th>
             <th data-sort-key="trend">Trend</th>
@@ -107,7 +115,7 @@
           </tr>
         </thead>
         <tbody id="stock-tbody">
-          <tr><td colspan="16"><div class="empty-state">Loading stock data…</div></td></tr>
+          <tr><td colspan="17"><div class="empty-state">Loading stock data…</div></td></tr>
         </tbody>
       </table>
       </div>

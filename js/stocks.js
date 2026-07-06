@@ -2,6 +2,21 @@ let STOCK_DATA = null;
 let ALL_ROWS = [];
 let CURRENT_SORT = { key: 'rs_vs_spy_1m_pct', dir: 'desc' };
 
+const FOCUS_TIER_RANK = { high_focus: 0, watch: 1, skip: 2 };
+const FOCUS_TIER_LABEL = { high_focus: 'High focus', watch: 'Watch', skip: 'Skip' };
+const FOCUS_TIER_PILL_CLASS = { high_focus: 'gain', watch: 'amber', skip: 'muted' };
+
+function focusTierBadge(r) {
+  const tier = r.focus_tier;
+  if (!tier || !(tier in FOCUS_TIER_LABEL)) return '—';
+  return `<span class="pill ${FOCUS_TIER_PILL_CLASS[tier]}">${FOCUS_TIER_LABEL[tier]}</span>`;
+}
+
+function sortAccessor(row, key) {
+  if (key === 'focus_tier') return FOCUS_TIER_RANK[row.focus_tier] ?? 99;
+  return row[key];
+}
+
 function flattenRows(data) {
   const rows = [];
   Object.entries(data.sectors).forEach(([sector, list]) => {
@@ -71,11 +86,11 @@ function renderTable() {
   const filtered = applyFilters(ALL_ROWS);
   renderStatStrip(filtered);
 
-  const sorted = sortRows(filtered, CURRENT_SORT.key, CURRENT_SORT.dir, (row, key) => row[key]);
+  const sorted = sortRows(filtered, CURRENT_SORT.key, CURRENT_SORT.dir, sortAccessor);
   const tbody = document.getElementById('stock-tbody');
 
   if (sorted.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="16"><div class="empty-state">No stocks match the current filters.</div></td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="17"><div class="empty-state">No stocks match the current filters.</div></td></tr>`;
     return;
   }
 
@@ -83,6 +98,7 @@ function renderTable() {
     const liquidityFlag = r.low_liquidity_guardrail ? ' <span class="pill muted" title="Average dollar volume is below the liquidity guardrail threshold">thin</span>' : '';
     return `
     <tr>
+      <td>${focusTierBadge(r)}</td>
       <td>
         <span class="ticker-cell">${r.ticker}</span>${liquidityFlag}
         <span class="name-sub">${r.name || ''} · ${r.sector}</span>

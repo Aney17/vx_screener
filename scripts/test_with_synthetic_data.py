@@ -13,7 +13,7 @@ from indicators import (
     sma, rsi, macd, relative_volume, relative_strength_line,
     rs_breakout_date, rs_breakout_age, trend_state, pct_change_over,
     momentum_factor, rs_slope, atr, extension_in_atrs, dollar_volume,
-    up_down_volume_ratio,
+    up_down_volume_ratio, classify_focus_tier,
 )
 
 np.random.seed(7)
@@ -92,3 +92,63 @@ updown = up_down_volume_ratio(winner, volume, 20)
 print("Up/down volume ratio, winner (should be >1 if up-day volume dominates):", updown)
 
 print("\nAll checks ran without errors.")
+
+print("\n=== focus tier classification checks ===")
+
+RSI_MIN, RSI_MAX, FRESH_DAYS, AGING_DAYS = 40, 75, 15, 45
+
+clean_setup = classify_focus_tier(
+    currently_outperforming=True, breakout_age_days=5, trend="strong uptrend",
+    rsi14=58, rs_1m_pct=8.0, rs_6m_pct=12.0, extended_guardrail=False,
+    low_liquidity_guardrail=False, rsi_healthy_min=RSI_MIN, rsi_healthy_max=RSI_MAX,
+    fresh_days=FRESH_DAYS, aging_days=AGING_DAYS,
+)
+print("Fresh, healthy-RSI, strong-uptrend breakout (expect high_focus):", clean_setup)
+
+overheated = classify_focus_tier(
+    currently_outperforming=True, breakout_age_days=77, trend="strong uptrend",
+    rsi14=97.9, rs_1m_pct=1425.0, rs_6m_pct=567.0, extended_guardrail=True,
+    low_liquidity_guardrail=False, rsi_healthy_min=RSI_MIN, rsi_healthy_max=RSI_MAX,
+    fresh_days=FRESH_DAYS, aging_days=AGING_DAYS,
+)
+print("Huge RS but extreme RSI + extended (expect watch, not high_focus):", overheated)
+
+no_edge = classify_focus_tier(
+    currently_outperforming=False, breakout_age_days=None, trend="mixed / consolidating",
+    rsi14=48, rs_1m_pct=-3.0, rs_6m_pct=-1.0, extended_guardrail=False,
+    low_liquidity_guardrail=False, rsi_healthy_min=RSI_MIN, rsi_healthy_max=RSI_MAX,
+    fresh_days=FRESH_DAYS, aging_days=AGING_DAYS,
+)
+print("Not currently outperforming (expect skip):", no_edge)
+
+illiquid = classify_focus_tier(
+    currently_outperforming=True, breakout_age_days=3, trend="strong uptrend",
+    rsi14=55, rs_1m_pct=6.0, rs_6m_pct=9.0, extended_guardrail=False,
+    low_liquidity_guardrail=True, rsi_healthy_min=RSI_MIN, rsi_healthy_max=RSI_MAX,
+    fresh_days=FRESH_DAYS, aging_days=AGING_DAYS,
+)
+print("Otherwise clean setup but illiquid (expect skip):", illiquid)
+
+mixed_timeframes = classify_focus_tier(
+    currently_outperforming=True, breakout_age_days=8, trend="strong uptrend",
+    rsi14=60, rs_1m_pct=5.0, rs_6m_pct=-4.0, extended_guardrail=False,
+    low_liquidity_guardrail=False, rsi_healthy_min=RSI_MIN, rsi_healthy_max=RSI_MAX,
+    fresh_days=FRESH_DAYS, aging_days=AGING_DAYS,
+)
+print("Fresh 1M pop sitting on a 6M decline (expect watch):", mixed_timeframes)
+
+aging_breakout = classify_focus_tier(
+    currently_outperforming=True, breakout_age_days=90, trend="strong uptrend",
+    rsi14=55, rs_1m_pct=4.0, rs_6m_pct=10.0, extended_guardrail=False,
+    low_liquidity_guardrail=False, rsi_healthy_min=RSI_MIN, rsi_healthy_max=RSI_MAX,
+    fresh_days=FRESH_DAYS, aging_days=AGING_DAYS,
+)
+print("Otherwise clean but breakout is 90 days old (expect watch, not fresh):", aging_breakout)
+
+assert clean_setup == "high_focus"
+assert overheated == "watch"
+assert no_edge == "skip"
+assert illiquid == "skip"
+assert mixed_timeframes == "watch"
+assert aging_breakout == "watch"
+print("\nAll focus tier assertions passed.")
