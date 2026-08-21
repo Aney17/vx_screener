@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-20T21:59:17.661277+00:00",
+  "generated_at": "2026-08-21T21:55:43.378522+00:00",
   "holding_period_days": 60,
   "signal_count": 0,
   "message": "No signals old enough to score yet. Keep the pipeline running daily -- this needs roughly 96 calendar days of history before the first cohort completes its holding period."
