@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-13T02:41:40.389467+00:00",
+  "generated_at": "2026-10-14T00:31:36.436598+00:00",
   "benchmark": "SPY",
   "windows": [
     "daily",
@@ -174,7 +174,7 @@
         "semiannual": -12.61,
         "yearly": -9.36
       },
-      "breadth_pct_outperforming": 14.4,
+      "breadth_pct_outperforming": 13.7,
       "rs_rank": 7,
       "breadth_stock_count": 139
     },
@@ -198,9 +198,9 @@
         "semiannual": -10.67,
         "yearly": -10.02
       },
-      "breadth_pct_outperforming": 25.2,
+      "breadth_pct_outperforming": 26.4,
       "rs_rank": 8,
-      "breadth_stock_count": 107
+      "breadth_stock_count": 106
     },
     {
       "ticker": "VFH",
