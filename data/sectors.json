@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-23T23:57:49.168716+00:00",
+  "generated_at": "2026-10-27T00:42:48.251753+00:00",
   "benchmark": "SPY",
   "windows": [
     "daily",
@@ -30,7 +30,7 @@
         "semiannual": 12.97,
         "yearly": 39.23
       },
-      "breadth_pct_outperforming": 46.4,
+      "breadth_pct_outperforming": 60.9,
       "rs_rank": 1,
       "breadth_stock_count": 110
     },
@@ -54,7 +54,7 @@
         "semiannual": 7.19,
         "yearly": 10.64
       },
-      "breadth_pct_outperforming": 44.3,
+      "breadth_pct_outperforming": 48.4,
       "rs_rank": 2,
       "breadth_stock_count": 318
     },
@@ -78,7 +78,7 @@
         "semiannual": 15.91,
         "yearly": 8.01
       },
-      "breadth_pct_outperforming": 47.7,
+      "breadth_pct_outperforming": 47.2,
       "rs_rank": 3,
       "breadth_stock_count": 407
     },
@@ -102,7 +102,7 @@
         "semiannual": -10.56,
         "yearly": -1.73
       },
-      "breadth_pct_outperforming": 39.3,
+      "breadth_pct_outperforming": 40.2,
       "rs_rank": 4,
       "breadth_stock_count": 112
     },
@@ -126,7 +126,7 @@
         "semiannual": -1.32,
         "yearly": -2.37
       },
-      "breadth_pct_outperforming": 69.6,
+      "breadth_pct_outperforming": 61.8,
       "rs_rank": 5,
       "breadth_stock_count": 102
     },
@@ -150,7 +150,7 @@
         "semiannual": 1.29,
         "yearly": -5.83
       },
-      "breadth_pct_outperforming": 54.8,
+      "breadth_pct_outperforming": 56.5,
       "rs_rank": 6,
       "breadth_stock_count": 418
     },
@@ -174,7 +174,7 @@
         "semiannual": -12.05,
         "yearly": -6.26
       },
-      "breadth_pct_outperforming": 36.0,
+      "breadth_pct_outperforming": 37.6,
       "rs_rank": 7,
       "breadth_stock_count": 394
     },
@@ -198,7 +198,7 @@
         "semiannual": -7.49,
         "yearly": -9.32
       },
-      "breadth_pct_outperforming": 44.6,
+      "breadth_pct_outperforming": 46.8,
       "rs_rank": 8,
       "breadth_stock_count": 139
     },
@@ -246,7 +246,7 @@
         "semiannual": -10.07,
         "yearly": -15.32
       },
-      "breadth_pct_outperforming": 52.3,
+      "breadth_pct_outperforming": 47.7,
       "rs_rank": 10,
       "breadth_stock_count": 279
     },
@@ -270,9 +270,9 @@
         "semiannual": -12.74,
         "yearly": -15.95
       },
-      "breadth_pct_outperforming": 73.5,
+      "breadth_pct_outperforming": 76.1,
       "rs_rank": 11,
-      "breadth_stock_count": 68
+      "breadth_stock_count": 67
     }
   ]
 }
