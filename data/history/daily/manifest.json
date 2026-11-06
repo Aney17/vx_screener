@@ -1,15 +1,5 @@
 {
   "dates": {
-    "2026-08-05": {
-      "stock_count": 2477,
-      "sector_count": 11,
-      "archived_at": "2026-08-05T22:38:43.451835+00:00"
-    },
-    "2026-08-07": {
-      "stock_count": 2476,
-      "sector_count": 11,
-      "archived_at": "2026-08-07T22:10:32.026783+00:00"
-    },
     "2026-08-10": {
       "stock_count": 2476,
       "sector_count": 11,
@@ -289,6 +279,11 @@
       "stock_count": 2451,
       "sector_count": 11,
       "archived_at": "2026-11-03T03:05:58.750905+00:00"
+    },
+    "2026-11-06": {
+      "stock_count": 2445,
+      "sector_count": 11,
+      "archived_at": "2026-11-06T01:47:15.332887+00:00"
     }
   }
 }
