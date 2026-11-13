@@ -1,10 +1,5 @@
 {
   "dates": {
-    "2026-08-14": {
-      "stock_count": 2475,
-      "sector_count": 11,
-      "archived_at": "2026-08-14T21:53:58.327985+00:00"
-    },
     "2026-08-18": {
       "stock_count": 2473,
       "sector_count": 11,
@@ -279,6 +274,11 @@
       "stock_count": 2443,
       "sector_count": 11,
       "archived_at": "2026-11-12T02:28:24.286712+00:00"
+    },
+    "2026-11-13": {
+      "stock_count": 2443,
+      "sector_count": 11,
+      "archived_at": "2026-11-13T02:05:50.684677+00:00"
     }
   }
 }
