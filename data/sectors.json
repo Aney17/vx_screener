@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-18T03:04:36.703399+00:00",
+  "generated_at": "2026-11-21T02:43:17.906585+00:00",
   "benchmark": "SPY",
   "windows": [
     "daily",
@@ -13,266 +13,266 @@
     {
       "ticker": "VDE",
       "sector": "Energy",
-      "last_close": 175.7,
+      "last_close": 167.66,
       "raw_return": {
-        "daily": -0.72,
-        "weekly": 1.54,
-        "monthly": -7.05,
-        "quarterly": -1.28,
-        "semiannual": 2.72,
-        "yearly": 39.54
+        "daily": -0.73,
+        "weekly": -7.17,
+        "monthly": -10.8,
+        "quarterly": -5.17,
+        "semiannual": 1.07,
+        "yearly": 36.0
       },
       "relative_strength": {
-        "daily": 0.29,
-        "weekly": 3.97,
-        "monthly": -2.73,
-        "quarterly": 3.4,
-        "semiannual": 2.38,
-        "yearly": 26.65
+        "daily": 3.02,
+        "weekly": 1.52,
+        "monthly": -1.21,
+        "quarterly": 4.7,
+        "semiannual": 8.69,
+        "yearly": 29.25
       },
-      "breadth_pct_outperforming": 29.1,
+      "breadth_pct_outperforming": 36.4,
       "rs_rank": 1,
       "breadth_stock_count": 110
     },
     {
-      "ticker": "VHT",
-      "sector": "Health Care",
-      "last_close": 341.07,
-      "raw_return": {
-        "daily": -1.3,
-        "weekly": -2.22,
-        "monthly": 4.64,
-        "quarterly": 3.83,
-        "semiannual": 25.27,
-        "yearly": 22.66
-      },
-      "relative_strength": {
-        "daily": -0.29,
-        "weekly": 0.11,
-        "monthly": 9.51,
-        "quarterly": 8.75,
-        "semiannual": 24.86,
-        "yearly": 11.33
-      },
-      "breadth_pct_outperforming": 53.1,
-      "rs_rank": 2,
-      "breadth_stock_count": 405
-    },
-    {
       "ticker": "VDC",
       "sector": "Consumer Staples",
-      "last_close": 250.06,
+      "last_close": 247.1,
       "raw_return": {
-        "daily": -1.01,
-        "weekly": 0.68,
-        "monthly": 5.76,
-        "quarterly": 7.26,
-        "semiannual": 7.67,
-        "yearly": 21.37
+        "daily": 0.61,
+        "weekly": -1.85,
+        "monthly": 1.45,
+        "quarterly": 5.41,
+        "semiannual": 8.74,
+        "yearly": 21.33
       },
       "relative_strength": {
-        "daily": 0.0,
-        "weekly": 3.08,
-        "monthly": 10.68,
-        "quarterly": 12.34,
-        "semiannual": 7.32,
-        "yearly": 10.16
+        "daily": 4.42,
+        "weekly": 7.33,
+        "monthly": 12.35,
+        "quarterly": 16.37,
+        "semiannual": 16.95,
+        "yearly": 15.3
       },
-      "breadth_pct_outperforming": 75.0,
-      "rs_rank": 3,
+      "breadth_pct_outperforming": 81.0,
+      "rs_rank": 2,
       "breadth_stock_count": 100
+    },
+    {
+      "ticker": "VHT",
+      "sector": "Health Care",
+      "last_close": 326.69,
+      "raw_return": {
+        "daily": -0.4,
+        "weekly": -6.1,
+        "monthly": -2.85,
+        "quarterly": 0.06,
+        "semiannual": 17.74,
+        "yearly": 17.07
+      },
+      "relative_strength": {
+        "daily": 3.37,
+        "weekly": 2.68,
+        "monthly": 7.6,
+        "quarterly": 10.47,
+        "semiannual": 26.63,
+        "yearly": 11.25
+      },
+      "breadth_pct_outperforming": 58.2,
+      "rs_rank": 3,
+      "breadth_stock_count": 404
     },
     {
       "ticker": "VAW",
       "sector": "Materials",
-      "last_close": 221.99,
+      "last_close": 209.2,
       "raw_return": {
-        "daily": -1.21,
-        "weekly": -4.24,
-        "monthly": -1.5,
-        "quarterly": -5.34,
-        "semiannual": 0.97,
-        "yearly": 15.04
+        "daily": -2.85,
+        "weekly": -8.38,
+        "monthly": -7.64,
+        "quarterly": -12.3,
+        "semiannual": -7.52,
+        "yearly": 9.71
       },
       "relative_strength": {
-        "daily": -0.19,
-        "weekly": -1.96,
-        "monthly": 3.08,
-        "quarterly": -0.86,
-        "semiannual": 0.63,
-        "yearly": 4.41
+        "daily": 0.82,
+        "weekly": 0.19,
+        "monthly": 2.29,
+        "quarterly": -3.17,
+        "semiannual": -0.54,
+        "yearly": 4.26
       },
-      "breadth_pct_outperforming": 45.5,
+      "breadth_pct_outperforming": 48.2,
       "rs_rank": 4,
       "breadth_stock_count": 112
     },
     {
-      "ticker": "VGT",
-      "sector": "Information Technology",
-      "last_close": 106.81,
+      "ticker": "VNQ",
+      "sector": "Real Estate",
+      "last_close": 92.56,
       "raw_return": {
-        "daily": -0.94,
-        "weekly": -3.36,
-        "monthly": -11.24,
-        "quarterly": -9.99,
-        "semiannual": -4.0,
-        "yearly": 13.49
+        "daily": -0.97,
+        "weekly": -4.05,
+        "monthly": -0.1,
+        "quarterly": -5.79,
+        "semiannual": -2.67,
+        "yearly": 8.53
       },
       "relative_strength": {
-        "daily": 0.08,
-        "weekly": -1.05,
-        "monthly": -7.11,
-        "quarterly": -5.72,
-        "semiannual": -4.31,
-        "yearly": 3.0
+        "daily": 2.77,
+        "weekly": 4.93,
+        "monthly": 10.64,
+        "quarterly": 4.01,
+        "semiannual": 4.68,
+        "yearly": 3.14
       },
-      "breadth_pct_outperforming": 33.8,
+      "breadth_pct_outperforming": 83.3,
       "rs_rank": 5,
-      "breadth_stock_count": 317
+      "breadth_stock_count": 138
     },
     {
       "ticker": "VFH",
       "sector": "Financials",
-      "last_close": 137.92,
+      "last_close": 131.8,
       "raw_return": {
-        "daily": -1.92,
-        "weekly": -2.35,
-        "monthly": 3.13,
-        "quarterly": -1.61,
-        "semiannual": 11.15,
-        "yearly": 9.95
+        "daily": -1.89,
+        "weekly": -7.05,
+        "monthly": -4.26,
+        "quarterly": -7.01,
+        "semiannual": 4.49,
+        "yearly": 6.95
       },
       "relative_strength": {
-        "daily": -0.91,
-        "weekly": -0.02,
-        "monthly": 7.93,
-        "quarterly": 3.05,
-        "semiannual": 10.79,
-        "yearly": -0.21
+        "daily": 1.82,
+        "weekly": 1.65,
+        "monthly": 6.03,
+        "quarterly": 2.66,
+        "semiannual": 12.38,
+        "yearly": 1.64
       },
-      "breadth_pct_outperforming": 73.1,
+      "breadth_pct_outperforming": 80.1,
       "rs_rank": 6,
       "breadth_stock_count": 417
     },
     {
-      "ticker": "VNQ",
-      "sector": "Real Estate",
-      "last_close": 94.89,
+      "ticker": "VGT",
+      "sector": "Information Technology",
+      "last_close": 97.64,
       "raw_return": {
-        "daily": -1.39,
-        "weekly": -2.26,
-        "monthly": 4.61,
-        "quarterly": -2.94,
-        "semiannual": 1.34,
-        "yearly": 9.92
+        "daily": -7.0,
+        "weekly": -12.18,
+        "monthly": -17.67,
+        "quarterly": -16.03,
+        "semiannual": -15.45,
+        "yearly": 6.37
       },
       "relative_strength": {
-        "daily": -0.38,
-        "weekly": 0.08,
-        "monthly": 9.47,
-        "quarterly": 1.66,
-        "semiannual": 1.01,
-        "yearly": -0.24
+        "daily": -3.49,
+        "weekly": -3.96,
+        "monthly": -8.82,
+        "quarterly": -7.3,
+        "semiannual": -9.06,
+        "yearly": 1.09
       },
-      "breadth_pct_outperforming": 75.4,
+      "breadth_pct_outperforming": 35.6,
       "rs_rank": 7,
-      "breadth_stock_count": 138
+      "breadth_stock_count": 317
     },
     {
       "ticker": "VIS",
       "sector": "Industrials",
-      "last_close": 315.57,
+      "last_close": 299.47,
       "raw_return": {
-        "daily": -0.79,
-        "weekly": -2.77,
-        "monthly": -0.97,
-        "quarterly": -9.45,
-        "semiannual": -3.51,
-        "yearly": 9.04
+        "daily": -3.23,
+        "weekly": -7.59,
+        "monthly": -5.97,
+        "quarterly": -12.45,
+        "semiannual": -10.51,
+        "yearly": 4.8
       },
       "relative_strength": {
-        "daily": 0.23,
-        "weekly": -0.45,
-        "monthly": 3.63,
-        "quarterly": -5.16,
-        "semiannual": -3.83,
-        "yearly": -1.03
+        "daily": 0.42,
+        "weekly": 1.06,
+        "monthly": 4.14,
+        "quarterly": -3.34,
+        "semiannual": -3.75,
+        "yearly": -0.4
       },
-      "breadth_pct_outperforming": 54.6,
+      "breadth_pct_outperforming": 57.4,
       "rs_rank": 8,
       "breadth_stock_count": 390
     },
     {
       "ticker": "VCR",
       "sector": "Consumer Discretionary",
-      "last_close": 389.32,
+      "last_close": 373.26,
       "raw_return": {
-        "daily": -0.89,
-        "weekly": -3.41,
-        "monthly": 1.94,
-        "quarterly": -2.27,
-        "semiannual": 2.91,
-        "yearly": 3.33
+        "daily": -3.04,
+        "weekly": -6.56,
+        "monthly": -2.86,
+        "quarterly": -5.91,
+        "semiannual": -5.06,
+        "yearly": 1.9
       },
       "relative_strength": {
-        "daily": 0.13,
-        "weekly": -1.1,
-        "monthly": 6.68,
-        "quarterly": 2.36,
-        "semiannual": 2.57,
-        "yearly": -6.22
+        "daily": 0.63,
+        "weekly": 2.19,
+        "monthly": 7.59,
+        "quarterly": 3.88,
+        "semiannual": 2.1,
+        "yearly": -3.16
       },
-      "breadth_pct_outperforming": 65.2,
+      "breadth_pct_outperforming": 70.1,
       "rs_rank": 9,
-      "breadth_stock_count": 279
+      "breadth_stock_count": 278
     },
     {
       "ticker": "VPU",
       "sector": "Utilities",
-      "last_close": 187.43,
+      "last_close": 184.2,
       "raw_return": {
-        "daily": -1.62,
-        "weekly": -0.87,
-        "monthly": 4.76,
-        "quarterly": -0.83,
-        "semiannual": -1.06,
-        "yearly": 0.18
+        "daily": -0.78,
+        "weekly": -3.23,
+        "monthly": -0.5,
+        "quarterly": -0.73,
+        "semiannual": -4.94,
+        "yearly": -1.25
       },
       "relative_strength": {
-        "daily": -0.61,
-        "weekly": 1.5,
-        "monthly": 9.62,
-        "quarterly": 3.87,
-        "semiannual": -1.38,
-        "yearly": -9.08
+        "daily": 2.97,
+        "weekly": 5.83,
+        "monthly": 10.2,
+        "quarterly": 9.6,
+        "semiannual": 2.23,
+        "yearly": -6.15
       },
-      "breadth_pct_outperforming": 82.4,
+      "breadth_pct_outperforming": 83.3,
       "rs_rank": 10,
-      "breadth_stock_count": 68
+      "breadth_stock_count": 66
     },
     {
       "ticker": "VOX",
       "sector": "Communication Services",
-      "last_close": 177.59,
+      "last_close": 168.24,
       "raw_return": {
-        "daily": -1.26,
-        "weekly": -2.49,
-        "monthly": -6.04,
-        "quarterly": -4.18,
-        "semiannual": -8.41,
-        "yearly": -0.52
+        "daily": -3.04,
+        "weekly": -8.23,
+        "monthly": -8.41,
+        "quarterly": -10.04,
+        "semiannual": -13.6,
+        "yearly": -6.09
       },
       "relative_strength": {
-        "daily": -0.24,
-        "weekly": -0.16,
-        "monthly": -1.68,
-        "quarterly": 0.36,
-        "semiannual": -8.71,
-        "yearly": -9.71
+        "daily": 0.63,
+        "weekly": 0.36,
+        "monthly": 1.43,
+        "quarterly": -0.68,
+        "semiannual": -7.07,
+        "yearly": -10.75
       },
-      "breadth_pct_outperforming": 60.6,
+      "breadth_pct_outperforming": 59.0,
       "rs_rank": 11,
-      "breadth_stock_count": 104
+      "breadth_stock_count": 105
     }
   ]
 }
